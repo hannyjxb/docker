@@ -33,6 +33,6 @@ jobs:
       with:
         context: ./web_services/
         platforms: linux/arm64
-        file: Dockerfile
+        file: ./web_services/Dockerfile
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/web_services:base
