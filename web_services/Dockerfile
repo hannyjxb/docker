@@ -1,5 +1,5 @@
 # Use the official Ubuntu as the base image
-FROM ubuntu:20.04
+FROM browserless/chrome:latest
 # Set environment variables to avoid interactive prompts during installation
 ENV DEBIAN_FRONTEND=noninteractive
 # Install necessary dependencies, including wget
@@ -14,13 +14,6 @@ RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/*
 # Firefox Installation
 # 安装Firefox的依赖库
-RUN apt-get update && apt-get install -y firefox
-# Chrome Installation
-# Set up the Chrome PPA
-RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-RUN echo "deb [arch=arm64] https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list
-# Update the package list and install chrome
-RUN apt-get update && apt-get install -y google-chrome-stable
-# Clean up
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y firefox && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 # sudo docker build -t web_services:base ./imagebase/
