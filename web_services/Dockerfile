@@ -4,8 +4,7 @@ FROM browserless/chrome:latest
 ENV DEBIAN_FRONTEND=noninteractive
 USER root
 # Install necessary dependencies, including wget
-RUN apt-get update && apt-get install -y software-properties-common apt-transport-https gcc unzip wget curl xvfb vim libnss3 libatk-bridge2.0-0 libatspi2.0-0 && add-apt-repository -y ppa:deadsnakes/ppa
-RUN apt-get update && apt-get install -y python3.10 python3.10-distutils
+RUN apt-get update && apt-get install -y software-properties-common apt-transport-https gcc unzip wget curl xvfb vim libnss3 libatk-bridge2.0-0 libatspi2.0-0 python3.10 python3.10-distutils
 RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1
 RUN update-alternatives --config python3
 RUN curl -m 900 -sS https://bootstrap.pypa.io/get-pip.py | python3.10
