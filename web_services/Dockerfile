@@ -2,8 +2,9 @@
 FROM browserless/chrome:latest
 # Set environment variables to avoid interactive prompts during installation
 ENV DEBIAN_FRONTEND=noninteractive
+USER root
 # Install necessary dependencies, including wget
-RUN apt-get update -qq && apt-get install -y -qq software-properties-common apt-transport-https gcc unzip wget curl xvfb vim libnss3 libatk-bridge2.0-0 libatspi2.0-0 && add-apt-repository -y ppa:deadsnakes/ppa
+RUN apt-get update && apt-get install -y software-properties-common apt-transport-https gcc unzip wget curl xvfb vim libnss3 libatk-bridge2.0-0 libatspi2.0-0 && add-apt-repository -y ppa:deadsnakes/ppa
 RUN apt-get update && apt-get install -y python3.10 python3.10-distutils
 RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1
 RUN update-alternatives --config python3
